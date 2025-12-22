@@ -1,0 +1,35 @@
+[
+  { "label": "frontend portfolio", "url": "https://manuchimoliver.vercel.app" },
+  {
+    "label": "java-tasks-manager",
+    "url": "https://github.com/mxnuchim/tasks-api-spring"
+  },
+  {
+    "label": "java-housing-data",
+    "url": "https://github.com/mxnuchim/java-housing-data"
+  },
+  {
+    "label": "java-payment-system",
+    "url": "https://github.com/mxnuchim/java-payment-system"
+  },
+  {
+    "label": "go-k8s-ride-sharing",
+    "url": "https://github.com/mxnuchim/go-microservices-ride-sharing"
+  },
+  {
+    "label": "go-users-crud",
+    "url": "https://github.com/mxnuchim/go-users-crud"
+  },
+  {
+    "label": "nestjs-blog-server",
+    "url": "https://github.com/mxnuchim/Blog-REST-API-NestJS-Prisma"
+  },
+  {
+    "label": "nestjs-bookmarks-server",
+    "url": "https://github.com/mxnuchim/Bookmarks-CRUD-API-NestJS-TypeScript-Postgres"
+  },
+  {
+    "label": "terraform-aws-devops",
+    "url": "https://github.com/mxnuchim/Terraform-AWS-DevOps-Project"
+  }
+]

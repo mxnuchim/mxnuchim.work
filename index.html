@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Manuchim Oliver — Backend playground</title>
+    <meta
+      name="description"
+      content="You've reached the backend server. Experiments in backend engineering, cloud, Kubernetes, CI/CD, and networking."
+    />
+    <meta property="og:title" content="Manuchim Oliver — Backend playground" />
+    <meta
+      property="og:description"
+      content="Experiments in backend engineering, cloud, Kubernetes, CI/CD, and networking."
+    />
+    <meta property="og:type" content="website" />
+    <meta name="theme-color" content="#0d0d0d" />
+
+    <!-- Font: JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      document.documentElement.classList.add("js");
+    </script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="wrap">
+      <section class="term" role="region" aria-label="Terminal window">
+        <div class="topbar" aria-hidden="true">
+          <span class="dot red"></span>
+          <span class="dot yellow"></span>
+          <span class="dot green"></span>
+          <span class="title">mxnuchim@work — bash</span>
+        </div>
+        <div class="screen" id="screen" aria-live="polite">
+          <div class="line">
+            <span class="prompt">$</span> <span id="cmd-whoami">whoami</span>
+          </div>
+          <div class="line output">manuchim oliver</div>
+          <div class="line">
+            <span class="prompt">$</span>
+            <span id="cmd-echo">echo "Backend playground"</span>
+          </div>
+          <div class="line output">Backend Playground</div>
+          <div class="line">
+            <span class="prompt">$</span> <span id="cmd-ls">ls</span>
+          </div>
+          <div id="projects-container" class="line output">
+            <noscript>
+              <div>no projects yet — check back soon</div>
+            </noscript>
+          </div>
+          <div class="line">
+            <span class="prompt">$</span>
+            <span id="final-cursor" class="blink cursor"></span>
+          </div>
+        </div>
+      </section>
+
+      <div
+        style="
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 8px;
+          margin-top: 10px;
+        "
+      >
+        <button
+          id="refreshBtn"
+          type="button"
+          aria-label="Refresh project list"
+          style="
+            font-family: inherit;
+            font-size: 12px;
+            padding: 6px 10px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: transparent;
+            color: var(--fg);
+            cursor: pointer;
+          "
+        >
+          refresh <span aria-hidden="true">(r)</span>
+        </button>
+        <span
+          id="updatedAt"
+          style="font-size: 12px; color: var(--muted)"
+        ></span>
+      </div>
+
+      <footer>
+        <span
+          >GitHub:
+          <a href="https://github.com/mxnuchim" rel="me">@mxnuchim</a></span
+        >
+        <span class="sep">•</span>
+        <a href="https://manuchimoliver.vercel.app" rel="me">portfolio</a>
+      </footer>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
