@@ -1,8 +1,3 @@
-// --- Auto-discover projects from a JSON file ---
-// Place a JSON file at /projects.json. Supported shapes:
-// 1) Array: [{ "label": "traefik.sheddy.work", "url": "https://traefik.sheddy.work" }, ...]
-// 2) Object map: { "traefik.sheddy.work": "https://traefik.sheddy.work", ... }
-
 (function () {
   "use strict";
 

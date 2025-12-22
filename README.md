@@ -1,8 +1,6 @@
-# sheddy.work
-
+# mxnuchim.work
 
 A terminal-style homepage for my personal projects that auto-discovers project domains & subdomains from a `projects.json` file.
-
 
 ## Features
 
@@ -11,7 +9,6 @@ A terminal-style homepage for my personal projects that auto-discovers project d
 - Manual refresh button + r keyboard shortcut
 - “last updated” timestamp (uses Last-Modified when available)
 - Zero build tools, zero deps
-
 
 ## Local development
 
@@ -27,9 +24,6 @@ npx http-server -p 8080
 
 Then visit http://localhost:8080/.
 
-
 ## License
 
-MIT © Shedrack Akintayo
-# mxnuchim.work
-# mxnuchim.work
+MIT © Manuchim Oliver
