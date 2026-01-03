@@ -1,8 +1,8 @@
 [
   { "label": "frontend portfolio", "url": "https://manuchimoliver.vercel.app" },
   {
-    "label": "java-tasks-manager",
-    "url": "https://github.com/mxnuchim/tasks-api-spring"
+    "label": "java-spring-security-asymmetric-encryption",
+    "url": "https://github.com/mxnuchim/spring-security-asymmetric-encryption"
   },
   {
     "label": "java-housing-data",
