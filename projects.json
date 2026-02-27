@@ -1,34 +1,46 @@
 [
   {
-    "label": "java-spring-security-asymmetric-encryption",
-    "url": "https://github.com/mxnuchim/spring-security-asymmetric-encryption"
-  },
-  {
-    "label": "java-housing-data",
-    "url": "https://github.com/mxnuchim/java-housing-data"
-  },
-  {
-    "label": "java-payment-system",
-    "url": "https://github.com/mxnuchim/java-payment-system"
+    "label": "cloudfront-terraform-deployment",
+    "url": "https://github.com/mxnuchim/portfolio-cloudfront-terraform",
+    "tags": ["Terraform", "AWS", "IaC", "Cloudfront", "S3"],
+    "pinned": true
   },
   {
     "label": "go-k8s-ride-sharing",
-    "url": "https://github.com/mxnuchim/go-microservices-ride-sharing"
+    "url": "https://github.com/mxnuchim/go-microservices-ride-sharing",
+    "tags": ["Go", "K8s", "gRPC", "Docker"],
+    "pinned": true
   },
   {
-    "label": "go-users-api",
-    "url": "https://github.com/mxnuchim/go-users-crud"
+    "label": "java-spring-security-auth",
+    "url": "https://github.com/mxnuchim/spring-security-asymmetric-encryption",
+    "tags": ["Java", "Spring", "Security"],
+    "pinned": true
+  },
+
+  {
+    "label": "java-payment-system",
+    "url": "https://github.com/mxnuchim/java-payment-system",
+    "tags": ["Java", "Spring"]
   },
   {
     "label": "nestjs-blog-api",
-    "url": "https://github.com/mxnuchim/Blog-REST-API-NestJS-Prisma"
+    "url": "https://github.com/mxnuchim/Blog-REST-API-NestJS-Prisma",
+    "tags": ["NestJS", "Prisma", "Postgres"]
   },
   {
     "label": "nestjs-bookmarks-server",
-    "url": "https://github.com/mxnuchim/Bookmarks-CRUD-API-NestJS-TypeScript-Postgres"
+    "url": "https://github.com/mxnuchim/Bookmarks-CRUD-API-NestJS-TypeScript-Postgres",
+    "tags": ["NestJS", "TypeScript"]
   },
   {
-    "label": "deployment-cloudfront-terraform",
-    "url": "https://github.com/mxnuchim/portfolio-cloudfront-terraform"
+    "label": "go-users-api",
+    "url": "https://github.com/mxnuchim/go-users-crud",
+    "tags": ["Go", "REST"]
+  },
+  {
+    "label": "java-housing-data",
+    "url": "https://github.com/mxnuchim/java-housing-data",
+    "tags": ["Java", "Data"]
   }
 ]

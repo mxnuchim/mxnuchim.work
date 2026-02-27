@@ -4,12 +4,11 @@
   const CONFIG = {
     JSON_URL: "/projects.json",
     TYPING_SPEED: 80,
-    CACHE_DURATION: 5 * 60 * 1000, // 5 minutes
+    CACHE_DURATION: 5 * 60 * 1000,
   };
 
   let elements = {};
 
-  // Cache for projects data
   let projectsCache = {
     data: null,
     timestamp: 0,
@@ -28,7 +27,6 @@
 
   function typeText(target, text, speed = CONFIG.TYPING_SPEED) {
     return new Promise((resolve) => {
-      const originalText = target.textContent;
       target.textContent = "";
 
       let i = 0;
@@ -42,7 +40,6 @@
         } else {
           clearInterval(typeInterval);
           cursor.remove();
-          target.textContent = originalText;
           resolve();
         }
         elements.screen.scrollTop = elements.screen.scrollHeight;
@@ -59,11 +56,20 @@
         .map((x) => ({
           label: x.label || x.url || x.href,
           url: x.url || x.href || "#",
+          desc: x.desc || null,
+          tags: Array.isArray(x.tags) ? x.tags : [],
+          pinned: !!x.pinned,
         }));
     }
 
     if (typeof json === "object") {
-      return Object.entries(json).map(([label, url]) => ({ label, url }));
+      return Object.entries(json).map(([label, url]) => ({
+        label,
+        url,
+        desc: null,
+        tags: [],
+        pinned: false,
+      }));
     }
 
     return [];
@@ -77,9 +83,7 @@
     try {
       const res = await fetch(CONFIG.JSON_URL, {
         cache: "no-store",
-        headers: {
-          Accept: "application/json",
-        },
+        headers: { Accept: "application/json" },
       });
 
       if (!res.ok) {
@@ -103,28 +107,15 @@
       return result;
     } catch (err) {
       console.error("Failed to fetch projects:", err);
-      return {
-        list: null,
-        ts: new Date(),
-        error: err.message,
-      };
+      return { list: null, ts: new Date(), error: err.message };
     }
   }
 
   function setUpdated(ts, note) {
     const iso = ts.toISOString();
-    const text = `last updated: ${iso}${note ? ` — ${note}` : ""}`;
-    elements.updatedAt.textContent = text;
-  }
-
-  function getTerminalLines() {
-    const screen = elements.screen;
-    if (!screen) return { lines: [], cmds: [] };
-    const lines = Array.from(screen.querySelectorAll(".line"));
-    const cmds = [elements.cmdWhoami, elements.cmdEcho, elements.cmdLs].filter(
-      Boolean
-    );
-    return { lines, cmds };
+    elements.updatedAt.textContent = `last updated: ${iso}${
+      note ? ` — ${note}` : ""
+    }`;
   }
 
   function revealLine(el) {
@@ -151,6 +142,7 @@
         renderProjects(projects);
         setUpdated(ts);
       }
+
       elements.projectsContainer.classList.remove("refreshing");
       elements.projectsContainer.style.transition = "filter .2s ease";
       elements.projectsContainer.style.filter = "brightness(1.2)";
@@ -167,8 +159,7 @@
 
   async function playTypingAnimation() {
     const speed = CONFIG.TYPING_SPEED;
-    const { lines } = getTerminalLines();
-    // Reveal up to the first command line
+    const lines = Array.from(elements.screen.querySelectorAll(".line"));
     revealLine(lines[0]);
     await typeText(elements.cmdWhoami, "whoami", speed);
     revealLine(lines[1]);
@@ -181,33 +172,65 @@
   }
 
   function renderProjects(projects) {
+    // Pinned projects first, preserve relative order within each group
+    const sorted = [
+      ...projects.filter((p) => p.pinned),
+      ...projects.filter((p) => !p.pinned),
+    ];
+
     const fragment = document.createDocumentFragment();
 
-    projects.forEach((project) => {
+    sorted.forEach((project) => {
+      const item = document.createElement("div");
+      item.className = "project-item";
+
+      // Row 1: ★ + link + tags
+      const top = document.createElement("div");
+      top.className = "project-top";
+
+      if (project.pinned) {
+        const pin = document.createElement("span");
+        pin.className = "project-pin";
+        pin.setAttribute("aria-label", "featured");
+        pin.textContent = "★";
+        top.appendChild(pin);
+      }
+
       const link = document.createElement("a");
       link.href = project.url;
       link.textContent = project.label;
       link.target = "_blank";
       link.rel = "noopener noreferrer";
+      top.appendChild(link);
 
-      const row = document.createElement("div");
-      row.appendChild(link);
-      fragment.appendChild(row);
+      if (project.tags.length > 0) {
+        const tags = document.createElement("span");
+        tags.className = "project-tags";
+        tags.textContent = "· " + project.tags.join(" · ");
+        top.appendChild(tags);
+      }
+
+      item.appendChild(top);
+
+      // Row 2: description
+      // if (project.desc) {
+      //   const desc = document.createElement("div");
+      //   desc.className = "project-desc";
+      //   desc.textContent = project.desc;
+      //   item.appendChild(desc);
+      // }
+
+      fragment.appendChild(item);
     });
 
     elements.projectsContainer.appendChild(fragment);
   }
 
-  // Debounce function to prevent rapid calls
   function debounce(func, wait) {
     let timeout;
-    return function executedFunction(...args) {
-      const later = () => {
-        clearTimeout(timeout);
-        func(...args);
-      };
+    return function (...args) {
       clearTimeout(timeout);
-      timeout = setTimeout(later, wait);
+      timeout = setTimeout(() => func(...args), wait);
     };
   }
 
@@ -246,13 +269,11 @@
     elements.refreshBtn.addEventListener("click", debouncedRefresh);
     window.addEventListener("keydown", onKeydown);
 
-    // Start with all lines hidden (CSS), then reveal progressively
     await playTypingAnimation();
     await loadProjects();
     if (elements.finalCursor) elements.finalCursor.classList.add("blink");
   }
 
-  // Initialize when DOM is ready
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", init);
   } else {

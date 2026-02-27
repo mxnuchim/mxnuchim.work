@@ -111,6 +111,16 @@ body {
   word-break: break-word;
 }
 
+.line.output {
+  white-space: normal;
+}
+
+#cmd-whoami,
+#cmd-echo,
+#cmd-ls {
+  color: var(--fg);
+}
+
 /* When JS is enabled, hide terminal lines until script reveals them */
 .js .screen .line {
   visibility: hidden;
@@ -216,4 +226,56 @@ footer {
   #projects-container {
     column-count: 1;
   }
+}
+
+#projects-container {
+  column-count: 2;
+  column-gap: 40px;
+  padding-left: var(--prompt-indent);
+  /* override the inherited white-space so descriptions wrap */
+  white-space: normal;
+}
+
+@media (max-width: 640px) {
+  #projects-container {
+    column-count: 1;
+  }
+}
+
+.project-item {
+  break-inside: avoid;
+  margin-bottom: 14px;
+}
+
+.project-top {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 5px;
+  line-height: 1.4;
+}
+
+.project-pin {
+  color: var(--accent);
+  font-size: 10px;
+  flex-shrink: 0;
+  opacity: 0.8;
+}
+
+/* the link stays its normal accent colour — no override needed */
+
+.project-tags {
+  color: var(--muted);
+  font-size: 11px;
+  flex-shrink: 0;
+}
+
+.project-desc {
+  color: var(--muted);
+  font-size: 11.5px;
+  line-height: 1.5;
+  margin-top: 2px;
+  padding-left: 13px;
+  word-break: break-word;
+  white-space: normal;
 }
