@@ -1,5 +1,4 @@
 [
-  { "label": "frontend portfolio", "url": "https://manuchimoliver.vercel.app" },
   {
     "label": "java-spring-security-asymmetric-encryption",
     "url": "https://github.com/mxnuchim/spring-security-asymmetric-encryption"
@@ -17,11 +16,11 @@
     "url": "https://github.com/mxnuchim/go-microservices-ride-sharing"
   },
   {
-    "label": "go-users-crud",
+    "label": "go-users-api",
     "url": "https://github.com/mxnuchim/go-users-crud"
   },
   {
-    "label": "nestjs-blog-server",
+    "label": "nestjs-blog-api",
     "url": "https://github.com/mxnuchim/Blog-REST-API-NestJS-Prisma"
   },
   {
@@ -29,7 +28,7 @@
     "url": "https://github.com/mxnuchim/Bookmarks-CRUD-API-NestJS-TypeScript-Postgres"
   },
   {
-    "label": "terraform-aws-devops",
-    "url": "https://github.com/mxnuchim/Terraform-AWS-DevOps-Project"
+    "label": "deployment-cloudfront-terraform",
+    "url": "https://github.com/mxnuchim/portfolio-cloudfront-terraform"
   }
 ]
