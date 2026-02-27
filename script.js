@@ -173,11 +173,7 @@
     await typeText(elements.cmdWhoami, "whoami", speed);
     revealLine(lines[1]);
     revealLine(lines[2]);
-    await typeText(
-      elements.cmdEcho,
-      'echo "Great to see you here, man"',
-      speed
-    );
+    await typeText(elements.cmdEcho, "cat stack.md", speed);
     revealLine(lines[3]);
     revealLine(lines[4]);
     await typeText(elements.cmdLs, "ls", speed);
